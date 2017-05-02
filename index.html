@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="sidebar.js"></script>
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap-css-only/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="sidebar.css">
+    
+
+
+	<title>Backbone App</title>
+</head>
+<body>
+
+
+<div id="mySidenav" class="sidenav">
+ <!--  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+  <h2 id="title-action">Add a Classified </h2>
+  <input type="text" name="" placeholder="title" class="form-control title" id="title-input">
+  <input type="text" name="" placeholder="price" class="form-control price-input">
+  <input type="text" name="" placeholder="description" class="form-control description-input">
+  <input type="text" name="" placeholder="Image Link" class="form-control imageLink-input">
+  <br><br>
+  <button class="btn btn-primary add-classified" >Add</button>
+  <button class="btn btn-warning update-classified" onclick="varPass.update()"  style="display: none;">Update</button>
+
+  <button class="btn btn-default" onclick="closeNav()">Cancel</button>
+
+
+</div>
+
+
+
+<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+<div id="main">
+  
+
+
+
+
+    <nav id="myNavbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><strong>Classifieds</strong></a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="btn btn-default" onclick="openNav(false)"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> NEW CLASSIFIED</a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> FILTER</a>
+                        </li>
+                        <li>
+                            <input id="searchBox" type="text" name="" class="form-control" onclick="filter()">
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+
+    </nav>
+
+
+
+    <div class="container-fluid">
+    	<h1>Backbone </h1>
+
+       
+      
+        </div> 
+        <div class="row  classifieds-list ">
+            
+            
+        </div>
+
+        
+    
+    </div>
+
+
+</div>
+
+
+    <script type="text/template" class="classifieds-list-template">
+       
+        <div class="thumbnail col-md-4 ">
+            <img class="img-responsive imageLink" src="<%= imageLink %>">               
+                <div class="caption-full">
+                    <div class="detail-section">
+                        <h2 ><strong class="title"><%= title %></strong></h2>
+                        <h3 ><%= posted %><h3>
+                        <h3 class="price"><%= price %></h4>
+                        <p class="description"> <%= description %><p>
+                         
+                    </div>
+                    <div class="button-section">
+                        <button class="btn btn-default cancel detail-button" style="display: none;">Detail</button>
+                        <button class="btn btn-default contact-button">Contact</button>
+                        
+                        <button class="btn btn-warning admin-button">Admin</button>
+                        
+                    </div>   
+                        <div class="contact-section" style="display: none">
+                            <p> <%= contact.name %></p>
+                            <p> <%= contact.phone %></p>
+                            <p> <%= contact.email %></p>
+                            
+                        </div> 
+                        
+                        <div class="admin-section" style="display:none">
+                            
+                            <hr>
+                            <h4>Admin</h4>
+                            <button class="btn btn-warning edit-classified" >Edit</button> 
+                            <button class="btn btn-danger delete-classified" >Delete</button>
+                            <button class="btn btn-default cancel">Cancel</button>
+                        </div>
+
+
+                       
+
+                    
+                   
+                    
+                </div>
+        </div>
+    </script>
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
+	<script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
+
+	<script type="text/javascript" src="script.js"></script>
+    <!-- <script type="text/javascript" src="data.js"></script> -->
+</body>
+</html>
+
