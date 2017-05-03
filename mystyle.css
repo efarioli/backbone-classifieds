@@ -52,7 +52,11 @@ body {
 input {
 	width: 50%;
 }
-#searchBox{
+#search-box{
 	margin-top: 8px;
 	display: none;
+}
+
+.searchBoxVisible{
+	display: inline-block;
 }

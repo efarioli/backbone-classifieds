@@ -1,4 +1,5 @@
 // BackBone Model
+var strFilter="mac";
 
 var Classified = Backbone.Model.extend({
 	defaults: {
@@ -64,7 +65,6 @@ var ClassifiedView = Backbone.View.extend({
 		console.log(price+"----"+description+"+++++"+imageLink)
 		openNav(true);
 		
-
 		
 		$("input#title-input.form-control.title").val(title);
 		$("input.form-control.price-input").val(price);
@@ -118,12 +118,12 @@ var ClassifiedView = Backbone.View.extend({
 
 		this.$(".detail-button").show();
 		this.$(".detail-section").hide();
-
-		
+	
 
 	
 
 	}
+	
 
 });
 
@@ -141,18 +141,33 @@ var ClassifiedsView =  Backbone.View.extend({
 		 	}, 30);
 		}, this);
 		this.model.on("remove", this.render, this);
-	},	
+	},		
 	render: function() {
+		
+
+		console.log("*********");
+			//console.log(classified.attributes.title);
+			console.log(strFilter);
+			console.log("**==**==*=**=*=*");
+		
+		
 		var self = this;
 		this.$el.html("");
 		_.each(this.model.toArray(), function(classified) {
-			self.$el.append((new ClassifiedView({model: classified})).render().$el);
+			
+			
+
+			if ( classified.attributes.title.toLowerCase().includes(strFilter.toLowerCase()) || strFilter==="" ){
+				self.$el.append((new ClassifiedView({model: classified})).render().$el);
+
+			}
+
+			
 		});
 		return this;
-	},
-	filter: function(str){
-
 	}
+	
+
 });
 
 // instantiate BlogView
@@ -179,6 +194,17 @@ $(document).ready(function() {
 		closeNav();
 
 	});
+
+	$( "#filter-button" ).click(function() {
+		$("#search-box").toggle("search-box-visible")
+	});
+
+	$("#search-box").on( "keyup", function(){
+		//console.log($("#search-box").val());
+		strFilter= $("#search-box").val();
+		classifiedsView.render();
+
+	} ) ;
 	
 });
 
